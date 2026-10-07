@@ -46,7 +46,8 @@ Para copiar tabelas para o relatório, usem os ficheiros **.xlsx** (os CSV são 
 - **Preços:** Yahoo Finance via `yfinance`, preço de fecho ajustado (*Adj Close*, inclui dividendos e *splits*),
   de 2010-01-04 a 2026-09-18 (extração em setembro de 2026; `fim = 2026-09-21` no notebook 01). Calendário = dias de negociação do SPY.
   A TSLA só tem dados a partir de 29/06/2010 (122 dias em falta no início).
-- **Taxa sem risco:** *yield* da Treasury americana a 3 anos, FRED série `DGS3` (% ao ano).
+- **Taxa sem risco:** *yield* da Treasury americana a 3 anos, FRED série `DGS3` (% ao ano); a data de extração fica em
+  `notebooks/data/taxa_sem_risco_DGS3_info.txt` (ou é a data do download manual, se o automático falhar).
 - **SPY vs ^GSPC:** o SPY é o ETF investível (benchmark de mercado no backtest); o ^GSPC é o índice, não investível e sem dividendos.
 
 ## Convenções do backtest (notebook 04)
