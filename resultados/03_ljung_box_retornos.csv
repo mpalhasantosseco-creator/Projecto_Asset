@@ -1,4 +1,4 @@
-,Asset,Frequency,Series,Lag,Q stat,p-value,Reject H0 (5%)
+﻿,Asset,Frequency,Series,Lag,Q stat,p-value,Reject H0 (5%)
 0,WMT,Daily,r,5,13.108556402485535,0.02238243903382496,True
 1,WMT,Daily,r,10,29.262535455509084,0.0011297264509909912,True
 2,WMT,Daily,r,20,45.18193928341064,0.0010424676167285114,True
