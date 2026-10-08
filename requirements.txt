@@ -1,9 +1,22 @@
-pandas
-numpy
-yfinance
-matplotlib
-seaborn
-statsmodels
-scipy
-arch
-openpyxl
+# pip install -r requirements.txt   (Windows, macOS or Linux)
+#
+# Use Python 3.11, 3.12 or 3.13 (the pinned versions do not install on Python 3.14+).
+# The versions of the numerical libraries are PINNED so that every group member gets the same numbers
+# in notebooks 02-04 (tested: identical results with Python 3.11 and 3.13; the optimisers in scipy/arch
+# can give slightly different results with other versions or, in the last decimals, other processors).
+numpy==2.2.6
+pandas==2.2.3
+scipy==1.15.3
+statsmodels==0.14.4
+arch==7.2.0
+matplotlib==3.10.3
+openpyxl==3.1.5
+
+# Only used by notebook 01 to download the prices (the data are already saved in notebooks/data)
+yfinance>=0.2.54
+
+# To open and run the notebooks (Jupyter); nbconvert/nbformat are also used by the first cell of notebook 02
+notebook>=7
+ipykernel>=6
+nbformat>=5.9
+nbconvert>=7

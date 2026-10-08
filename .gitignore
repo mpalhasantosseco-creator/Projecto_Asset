@@ -1,9 +1,19 @@
 # Python / Jupyter
 __pycache__/
 .ipynb_checkpoints/
+.venv/
+venv/
 
-# Dados locais
+# Local data
 data/raw/*
 data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+
+# Temporary files: Excel lock files (created while a .xlsx file is open) and macOS folder settings
+~$*
+.DS_Store
+
+# Windows system files
+Thumbs.db
+desktop.ini
