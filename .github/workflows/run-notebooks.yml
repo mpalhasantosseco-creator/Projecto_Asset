@@ -1,0 +1,68 @@
+# "Run workflow" button: runs the notebooks on GitHub's servers and commits the results
+# (executed notebooks, HTML, figures/ and results/) to the branch you chose.
+# Where: repository page -> Actions -> "Run notebooks" -> Run workflow.
+name: Run notebooks
+
+on:
+  workflow_dispatch:
+    inputs:
+      notebooks:
+        description: "Notebooks to run (01 is never run: it would download new Yahoo prices)"
+        type: choice
+        options:
+          - "02 03 04"
+          - "04"
+          - "03"
+          - "02"
+        default: "02 03 04"
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    # Safety rule: never run (and commit) on main of the group repository Troniospt/Projecto_Asset
+    if: ${{ !(github.repository_owner == 'Troniospt' && github.ref_name == 'main') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Install Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install the pinned libraries
+        run: pip install -r requirements.txt
+
+      - name: Run the notebooks
+        working-directory: notebooks
+        env:
+          NOTEBOOKS: ${{ inputs.notebooks }}
+          OPENBLAS_NUM_THREADS: "1"
+          OMP_NUM_THREADS: "1"
+        run: |
+          for n in $NOTEBOOKS; do
+            nb=$(ls ${n}_*.ipynb)
+            echo "=== Running $nb"
+            jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=3600 "$nb"
+            jupyter nbconvert --to html "$nb"
+          done
+
+      - name: Commit the results to this branch
+        env:
+          NOTEBOOKS: ${{ inputs.notebooks }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add notebooks figures results
+          if git diff --cached --quiet; then
+            echo "Nothing changed: the results are identical to the committed ones."
+          else
+            git commit -m "Run notebooks $NOTEBOOKS with GitHub Actions"
+            git push
+          fi

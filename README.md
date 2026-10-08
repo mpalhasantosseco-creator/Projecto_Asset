@@ -12,7 +12,7 @@ Goal: study the empirical properties of stock returns (stylised facts) and compa
 | `notebooks/01_data_collection.ipynb` | Universe (23 S&P 500 stocks + SPY + ^GSPC), download from Yahoo Finance, data treatment (dividends, splits, currency, calendar, missing data), daily/weekly/monthly log returns. Also as `.html` |
 | `notebooks/02_walmart_eda.ipynb` | Exploratory analysis of Walmart (WMT): prices, histograms, Q-Q plots, quantiles, VaR, ACF, comparison with SPY/^GSPC. Also as `.html` |
 | `notebooks/03_stylised_facts_garch.ipynb` | The 6 stylised facts of WMT at daily, weekly and monthly frequency (Ljung-Box, Jarque-Bera, skewness with bootstrap, ARCH-LM, GJR-GARCH, standardised residuals), with SPY as a comparison; appendix (section 10) with descriptive statistics and Jarque-Bera p-values of all 25 series at the 3 frequencies. Also as `.html` |
-| `notebooks/04_strategies_backtest.ipynb` | The 8 strategies, illustration with 23 stocks, backtest of 100 experiments, metrics, robustness (costs, quarterly rebalancing, Markowitz λ, periods, stocks), conclusions. **Committed without outputs**: it must be run locally (see below) |
+| `notebooks/04_strategies_backtest.ipynb` | The 8 strategies, illustration with 23 stocks, backtest of 100 experiments, metrics, robustness (costs, quarterly rebalancing, Markowitz λ, periods, stocks), conclusions. Executed with the real FRED DGS3 series (extracted 8 October 2026). Also as `.html` |
 | `notebooks/data/` | Prices and returns produced by notebook 01 (`clean_prices.csv`, `daily_log_returns.csv`, `weekly_log_returns.csv`, `monthly_log_returns.csv`) and the daily WMT history used by notebook 02 (`walmart_history.csv`: open, high, low, close, adjusted close, volume, dividends and splits). These are the frozen data of the report: do not delete them. The risk-free rate (`risk_free_DGS3.csv`) is created by notebook 04 |
 | `figures/` | All charts (PNG). Those from notebook 02 have no prefix, those from notebook 03 start with `03_`, those from notebook 04 with `04_` |
 | `results/` | All tables as CSV and as Excel (`03_stylised_facts.xlsx`, `04_strategies_backtest.xlsx`) |
@@ -45,7 +45,15 @@ notebook 02 uses to export the notebook to HTML. In VS Code, select the `.venv` 
 do not install into the `base` environment; create one first: `conda create -n appm python=3.11`, `conda activate appm`,
 then `pip install -r requirements.txt`.
 
-### 2. Run the notebooks in order, from the `notebooks/` folder
+### Option A: run everything on GitHub (no installation)
+
+Repository page → **Actions** → **Run notebooks** → **Run workflow** → choose the branch and the notebooks → **Run workflow**.
+GitHub runs them with Python 3.11 and the pinned libraries (about 7 minutes) and commits the executed notebooks, the HTML,
+`figures/` and `results/` to that branch. On a fork, the first time, GitHub asks you to enable Actions
+("I understand my workflows, go ahead and enable them"). For safety, the workflow refuses to run on `main` of the group
+repository `Troniospt/Projecto_Asset`.
+
+### Option B: run on your computer — 2. Run the notebooks in order, from the `notebooks/` folder
 
 The paths in the code are relative to that folder (`data/`, `../figures/`, `../results/`).
 

@@ -1,0 +1,9 @@
+﻿,% beats EW: Sharpe,% beats EW: Ann. return,% beats EW: Max drawdown,% beats EW: Ann. volatility,% beats EW: Sterling
+Markowitz (λ=3),21.0,56.99999999999999,9.0,1.0,45.0
+GMV,31.0,26.0,65.0,98.0,30.0
+Max Sharpe,34.0,54.0,27.0,19.0,46.0
+Inverse vol,47.0,27.0,87.0,100.0,33.0
+Risk parity (ERC),51.0,26.0,86.0,100.0,32.0
+Most diversified,47.0,39.0,61.0,75.0,40.0
+Max decorrelation,41.0,64.0,26.0,27.0,54.0
+SPY (buy & hold),15.0,12.0,63.0,87.0,13.0
