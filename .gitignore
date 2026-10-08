@@ -13,3 +13,7 @@ data/processed/*
 # Temporary files: Excel lock files (created while a .xlsx file is open) and macOS folder settings
 ~$*
 .DS_Store
+
+# Windows system files
+Thumbs.db
+desktop.ini

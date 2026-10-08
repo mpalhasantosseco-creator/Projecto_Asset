@@ -1,8 +1,9 @@
-# Python 3.11, 3.12 or 3.13 (Windows, macOS or Linux): pip install -r requirements.txt
+# pip install -r requirements.txt   (Windows, macOS or Linux)
 #
-# The versions of the numerical libraries are PINNED: with these exact versions every computer
-# gets the same numbers in notebooks 02-04 (the optimisers in scipy/arch can give slightly
-# different results with other versions).
+# Use Python 3.11, 3.12 or 3.13 (the pinned versions do not install on Python 3.14+).
+# The versions of the numerical libraries are PINNED so that every group member gets the same numbers
+# in notebooks 02-04 (tested: identical results with Python 3.11 and 3.13; the optimisers in scipy/arch
+# can give slightly different results with other versions or, in the last decimals, other processors).
 numpy==2.2.6
 pandas==2.2.3
 scipy==1.15.3
