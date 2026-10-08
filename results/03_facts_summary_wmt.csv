@@ -1,0 +1,7 @@
+﻿Fact,Daily,Weekly,Monthly
+1. Little serial correlation,Supported (significant but tiny),Supported,Supported
+"2. Non-normal, fat tails",Supported,Supported,Supported
+3. Negative skewness,Not significant,Supported,Not significant
+4. Volatility clustering,Supported,Partial,Not supported
+5. Leverage effect,Supported,Not significant,Not significant
+6. Conditional non-normality,Supported,Supported,Supported
