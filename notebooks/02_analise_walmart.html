@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Notebook</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>02_analise_walmart</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7795,7 +7795,7 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e066d4cb">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e066d4cb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7808,7 +7808,39 @@ a.anchor-link {
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.distributions.empirical_distribution</span><span class="w"> </span><span class="kn">import</span> <span class="n">ECDF</span>
+<span class="c1">#%pip install nbconvert</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nbformat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nbconvert</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTMLExporter</span>
+
+<span class="n">ficheiro</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"02_analise_walmart.ipynb"</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">ficheiro</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">notebook</span> <span class="o">=</span> <span class="n">nbformat</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">as_version</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">exportador</span> <span class="o">=</span> <span class="n">HTMLExporter</span><span class="p">()</span>
+<span class="n">exportador</span><span class="o">.</span><span class="n">exclude_input</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># esconde o código</span>
+
+<span class="n">html</span><span class="p">,</span> <span class="n">recursos</span> <span class="o">=</span> <span class="n">exportador</span><span class="o">.</span><span class="n">from_notebook_node</span><span class="p">(</span><span class="n">notebook</span><span class="p">)</span>
+
+<span class="n">destino</span> <span class="o">=</span> <span class="n">ficheiro</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s2">".html"</span><span class="p">)</span>
+<span class="n">destino</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"HTML criado em: </span><span class="si">{</span><span class="n">destino</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>HTML criado em: C:\Users\anton\Desktop\Pós-Grad\Asset Pricing and Portfolio Management\projecto_git\Projecto_Asset\notebooks\02_analise_walmart.html
+</pre>
 </div>
 </div>
 </div>
@@ -9445,6 +9477,12 @@ Name: WMT, dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="WMT-vs-mercado:-SPY-(invest%C3%ADvel)-e-%5EGSPC-(%C3%ADndice)">WMT vs mercado: SPY (investível) e ^GSPC (índice)<a class="anchor-link" href="#WMT-vs-mercado:-SPY-(invest%C3%ADvel)-e-%5EGSPC-(%C3%ADndice)">¶</a></h2><ul>
+<li>O <strong>SPY</strong> é um ETF que se pode comprar; o seu preço ajustado inclui os dividendos, tal como o da WMT → é a comparação correta.</li>
+<li>O <strong>^GSPC</strong> é o índice S&amp;P 500: <strong>não é investível</strong> e é um índice de preços <strong>sem dividendos</strong>, por isso subestima o retorno total do mercado
+(cerca de 1.5–2 pontos percentuais por ano).</li>
+<li>Selecionamos primeiro as colunas e só depois retiramos os NaN (se fizermos <code>dropna()</code> à tabela toda, os NaN da TSLA cortam os primeiros 6 meses).</li>
+</ul>
 </div>
 </div>
 </div>
@@ -9459,16 +9497,13 @@ Name: WMT, dtype: float64</pre>
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="c1"># 1. Carregar o dataset de retornos diários</span>
-<span class="n">df_ret</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/retornos_diarios.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="c1"># 1. Carregar o dataset de retornos diários (log)</span>
+<span class="n">df_ret</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/retornos_diarios.csv'</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># 2. Selecionar apenas as colunas da WMT e do S&amp;P 500</span>
-<span class="c1"># (Ajusta os nomes das colunas se no teu CSV o índice estiver como 'X.GSPC' ou '^GSPC')</span>
-<span class="n">colunas_desejadas</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'WMT'</span><span class="p">,</span> <span class="s1">'^GSPC'</span><span class="p">,</span> <span class="s1">'X.GSPC'</span><span class="p">]</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_ret</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
-<span class="n">df_sub</span> <span class="o">=</span> <span class="n">df_ret</span><span class="p">[</span><span class="n">colunas_desejadas</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-<span class="c1"># Renomear para manter o rótulo limpo 'S&amp;P 500' se necessário</span>
-<span class="n">df_sub</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'S&amp;P 500'</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'^GSPC'</span><span class="p">,</span> <span class="s1">'X.GSPC'</span><span class="p">]</span> <span class="k">else</span> <span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_sub</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="c1"># 2. Selecionar a WMT, o SPY (ETF investível, com dividendos) e o ^GSPC (índice, sem dividendos)</span>
+<span class="c1">#    Primeiro escolhemos as colunas e só depois tiramos os NaN</span>
+<span class="n">df_sub</span> <span class="o">=</span> <span class="n">df_ret</span><span class="p">[[</span><span class="s1">'WMT'</span><span class="p">,</span> <span class="s1">'SPY'</span><span class="p">,</span> <span class="s1">'^GSPC'</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df_sub</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'WMT'</span><span class="p">,</span> <span class="s1">'SPY (ETF, with dividends)'</span><span class="p">,</span> <span class="s1">'^GSPC (index, no dividends)'</span><span class="p">]</span>
 
 <span class="c1"># 3. Definir a escala de anualização (252 dias úteis)</span>
 <span class="n">annual_scale</span> <span class="o">=</span> <span class="mi">252</span>
@@ -9482,7 +9517,7 @@ Name: WMT, dtype: float64</pre>
 <span class="n">Sigma_annual</span> <span class="o">=</span> <span class="n">Sigma_log</span> <span class="o">*</span> <span class="n">annual_scale</span>
 <span class="n">sd_annual</span> <span class="o">=</span> <span class="n">sd_log</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">annual_scale</span><span class="p">)</span>
 
-<span class="c1"># 5. Tabela 1: Resumo das Estimativas (WMT vs S&amp;P 500)</span>
+<span class="c1"># 5. Tabela 1: Resumo das Estimativas</span>
 <span class="n">annual_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">'Daily_log_mean'</span><span class="p">:</span> <span class="n">mu_log</span><span class="p">,</span>
     <span class="s1">'Daily_log_SD'</span><span class="p">:</span> <span class="n">sd_log</span><span class="p">,</span>
@@ -9491,14 +9526,14 @@ Name: WMT, dtype: float64</pre>
     <span class="s1">'Annual_geometric_growth'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">mu_annual</span><span class="p">)</span>
 <span class="p">})</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Daily and annualised log-return estimates (WMT vs S&amp;P 500):"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Daily and annualised log-return estimates (WMT vs SPY and ^GSPC):"</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">annual_summary</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 
-<span class="c1"># 6. Tabela 2: Matriz de Covariância Diária (2x2)</span>
+<span class="c1"># 6. Tabela 2: Matriz de Covariância Diária</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Daily log-return covariance matrix:"</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">Sigma_log</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
 
-<span class="c1"># 7. Tabela 3: Matriz de Covariância Anualizada (2x2)</span>
+<span class="c1"># 7. Tabela 3: Matriz de Covariância Anualizada</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Annualised log-return covariance matrix:"</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">Sigma_annual</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
@@ -9513,7 +9548,7 @@ Name: WMT, dtype: float64</pre>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Daily and annualised log-return estimates (WMT vs S&amp;P 500):
+<pre>Daily and annualised log-return estimates (WMT vs SPY and ^GSPC):
 </pre>
 </div>
 </div>
@@ -9548,19 +9583,27 @@ Name: WMT, dtype: float64</pre>
 <tbody>
 <tr>
 <th>WMT</th>
-<td>0.00054</td>
-<td>0.01267</td>
-<td>0.13630</td>
-<td>0.20113</td>
-<td>0.14603</td>
+<td>0.00050</td>
+<td>0.01259</td>
+<td>0.12682</td>
+<td>0.19993</td>
+<td>0.13522</td>
 </tr>
 <tr>
-<th>S&amp;P 500</th>
-<td>0.00049</td>
-<td>0.01078</td>
-<td>0.12318</td>
-<td>0.17106</td>
-<td>0.13109</td>
+<th>SPY (ETF, with dividends)</th>
+<td>0.00052</td>
+<td>0.01077</td>
+<td>0.13196</td>
+<td>0.17092</td>
+<td>0.14106</td>
+</tr>
+<tr>
+<th>^GSPC (index, no dividends)</th>
+<td>0.00045</td>
+<td>0.01084</td>
+<td>0.11454</td>
+<td>0.17214</td>
+<td>0.12136</td>
 </tr>
 </tbody>
 </table>
@@ -9597,19 +9640,28 @@ Daily log-return covariance matrix:
 <tr style="text-align: right;">
 <th></th>
 <th>WMT</th>
-<th>S&amp;P 500</th>
+<th>SPY (ETF, with dividends)</th>
+<th>^GSPC (index, no dividends)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>WMT</th>
-<td>0.000160</td>
+<td>0.000159</td>
+<td>0.000057</td>
 <td>0.000057</td>
 </tr>
 <tr>
-<th>S&amp;P 500</th>
+<th>SPY (ETF, with dividends)</th>
 <td>0.000057</td>
 <td>0.000116</td>
+<td>0.000117</td>
+</tr>
+<tr>
+<th>^GSPC (index, no dividends)</th>
+<td>0.000057</td>
+<td>0.000117</td>
+<td>0.000118</td>
 </tr>
 </tbody>
 </table>
@@ -9646,19 +9698,28 @@ Annualised log-return covariance matrix:
 <tr style="text-align: right;">
 <th></th>
 <th>WMT</th>
-<th>S&amp;P 500</th>
+<th>SPY (ETF, with dividends)</th>
+<th>^GSPC (index, no dividends)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>WMT</th>
-<td>0.04045</td>
-<td>0.01439</td>
+<td>0.03997</td>
+<td>0.01427</td>
+<td>0.01440</td>
 </tr>
 <tr>
-<th>S&amp;P 500</th>
-<td>0.01439</td>
-<td>0.02926</td>
+<th>SPY (ETF, with dividends)</th>
+<td>0.01427</td>
+<td>0.02921</td>
+<td>0.02938</td>
+</tr>
+<tr>
+<th>^GSPC (index, no dividends)</th>
+<td>0.01440</td>
+<td>0.02938</td>
+<td>0.02963</td>
 </tr>
 </tbody>
 </table>
