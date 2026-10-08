@@ -1,0 +1,2 @@
+Source: https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS3
+Extracted on: 2026-10-08 (downloaded manually from FRED by the group; last observation 2026-10-06)
